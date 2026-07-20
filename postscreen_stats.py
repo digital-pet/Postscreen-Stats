@@ -13,7 +13,7 @@ from time import mktime, strptime
 
 
 def usage():
-    print('''
+    help_txt = """
 postscreen_stats.py
     parses Postfix logs to compute statistics on postscreen activity
 
@@ -33,7 +33,7 @@ usage: postscreen_stats.py -f maillog
   -i|--ip=      filters the results on a specific IP
 
   --mapdest=    path to a destination HTML file to display maps result
-                /!\ Require geolocation with --geofile option
+                /!\\ Require geolocation with --geofile option
 
   --map-min-conn=   When creating a map, only show IPs which connected X times
 
@@ -49,7 +49,8 @@ $ postscreen_stats.py -f maillog --geofile=GeoLiteCity.dat --mapdest=report.html
 
 Julien Vehent https://jve.linuxwall.info/
 https://github.com/jvehent/Postscreen-Stats
-''')
+"""
+    print(help_txt)
 
 
 # convert the syslog time stamp in unix format and store it
@@ -111,8 +112,7 @@ class ClientStat:
         return False
 
 # VARIABLES
-IP_REGEXP = "((?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}" \
-            "(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?))"
+IP_REGEXP = "((?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?))"
 IP_FILTER = " "
 ACTION_FILTER = None
 NOW = dt.now()
