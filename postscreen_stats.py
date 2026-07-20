@@ -62,7 +62,7 @@ def gen_unix_ts(syslog_date):
     if RFC3339:
         date = syslog_date.split('+', 1)
         # example format: 2012-04-13T08:53:00+02:00
-        ts = strptime(date[0], '%Y-%m-%dT%H:%M:%S')
+        ts = strptime(date[0], '%Y-%m-%dT%H:%M:%S.%f')
         unix_ts = mktime(ts)
     else:
         # add the year
